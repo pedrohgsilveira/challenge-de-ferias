@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Challenge_de_ferias_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ET6-ps-UH1">
+                                <rect key="frame" x="103.5" y="624.5" width="207" height="59"/>
+                                <state key="normal" image="NewAlbumBtn"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxv-K8-Ada">
+                                <rect key="frame" x="103.5" y="723.5" width="207" height="58.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Oxv-K8-Ada" secondAttribute="height" multiplier="550:156" id="Vun-BL-YPZ"/>
+                                </constraints>
+                                <state key="normal" image="MyAlbumBtn"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballon" highlightedImage="ballon" translatesAutoresizingMaskIntoConstraints="NO" id="obi-UV-PVt">
+                                <rect key="frame" x="332.5" y="124" width="41.5" height="41.5"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballon" highlightedImage="ballon" translatesAutoresizingMaskIntoConstraints="NO" id="kXX-w8-sfV">
+                                <rect key="frame" x="201" y="98" width="41.5" height="41.5"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballon" highlightedImage="ballon" translatesAutoresizingMaskIntoConstraints="NO" id="Mc9-mC-Y6E">
+                                <rect key="frame" x="211.5" y="194" width="41.5" height="41.5"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballon" highlightedImage="ballon" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-mU-Q79">
+                                <rect key="frame" x="30" y="92" width="41.5" height="41.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Dwo-mU-Q79" secondAttribute="height" multiplier="1:1" id="ThW-8O-ZsB"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper Airplane" highlightedImage="paper Airplane" translatesAutoresizingMaskIntoConstraints="NO" id="iHs-9I-EtN">
+                                <rect key="frame" x="41.5" y="319.5" width="331" height="265"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iHs-9I-EtN" secondAttribute="height" multiplier="1:0.8" id="w6O-dG-xOL"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballon" highlightedImage="ballon" translatesAutoresizingMaskIntoConstraints="NO" id="7sY-Ps-c8l">
+                                <rect key="frame" x="60" y="193.5" width="41.5" height="41.5"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.77254901960784317" green="0.9137254901960784" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7sY-Ps-c8l" firstAttribute="width" secondItem="Dwo-mU-Q79" secondAttribute="width" id="1c3-KF-lU7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Oxv-K8-Ada" secondAttribute="bottom" constant="80" id="3wb-V5-CR9"/>
+                            <constraint firstItem="obi-UV-PVt" firstAttribute="height" secondItem="7sY-Ps-c8l" secondAttribute="height" id="6L5-3h-9Yz"/>
+                            <constraint firstItem="7sY-Ps-c8l" firstAttribute="top" secondItem="Dwo-mU-Q79" secondAttribute="bottom" constant="60" id="7Qk-nh-oO7"/>
+                            <constraint firstItem="Oxv-K8-Ada" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7iN-Zp-8oq"/>
+                            <constraint firstItem="Mc9-mC-Y6E" firstAttribute="height" secondItem="Dwo-mU-Q79" secondAttribute="height" id="8Vn-Dv-kxR"/>
+                            <constraint firstItem="obi-UV-PVt" firstAttribute="leading" secondItem="kXX-w8-sfV" secondAttribute="trailing" constant="90" id="BwA-5A-6LF"/>
+                            <constraint firstItem="Mc9-mC-Y6E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="Gl8-2c-Lwm"/>
+                            <constraint firstItem="iHs-9I-EtN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Jug-e0-9xX"/>
+                            <constraint firstItem="ET6-ps-UH1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LQh-Ds-53g"/>
+                            <constraint firstItem="ET6-ps-UH1" firstAttribute="top" secondItem="iHs-9I-EtN" secondAttribute="bottom" constant="40" id="LgW-qh-CMR"/>
+                            <constraint firstItem="Dwo-mU-Q79" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="Mey-7e-MTQ"/>
+                            <constraint firstItem="kXX-w8-sfV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="54" id="MwJ-bV-9Op"/>
+                            <constraint firstItem="7sY-Ps-c8l" firstAttribute="height" secondItem="Dwo-mU-Q79" secondAttribute="height" id="PRC-j4-c0V"/>
+                            <constraint firstItem="kXX-w8-sfV" firstAttribute="height" secondItem="Dwo-mU-Q79" secondAttribute="height" id="R5B-g3-59N"/>
+                            <constraint firstItem="Dwo-mU-Q79" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="SAJ-M3-dSJ"/>
+                            <constraint firstItem="Mc9-mC-Y6E" firstAttribute="leading" secondItem="Dwo-mU-Q79" secondAttribute="trailing" constant="140" id="SYu-Yx-Yv4"/>
+                            <constraint firstItem="kXX-w8-sfV" firstAttribute="width" secondItem="Dwo-mU-Q79" secondAttribute="width" id="XOC-qr-q7i"/>
+                            <constraint firstItem="Oxv-K8-Ada" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="aBp-W5-xAY"/>
+                            <constraint firstItem="ET6-ps-UH1" firstAttribute="height" secondItem="Oxv-K8-Ada" secondAttribute="height" id="cl1-8g-1DR"/>
+                            <constraint firstItem="7sY-Ps-c8l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="dDm-Lm-H4h"/>
+                            <constraint firstItem="Dwo-mU-Q79" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="eLY-1Y-PUg"/>
+                            <constraint firstItem="ET6-ps-UH1" firstAttribute="width" secondItem="Oxv-K8-Ada" secondAttribute="width" id="heA-6J-UvQ"/>
+                            <constraint firstItem="iHs-9I-EtN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="ixd-Dj-iIr"/>
+                            <constraint firstItem="Mc9-mC-Y6E" firstAttribute="width" secondItem="Dwo-mU-Q79" secondAttribute="width" id="kbK-Ca-qx0"/>
+                            <constraint firstItem="obi-UV-PVt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="l29-MV-WW3"/>
+                            <constraint firstItem="obi-UV-PVt" firstAttribute="width" secondItem="7sY-Ps-c8l" secondAttribute="width" id="ttj-A8-GPD"/>
+                            <constraint firstItem="Oxv-K8-Ada" firstAttribute="top" secondItem="ET6-ps-UH1" secondAttribute="bottom" constant="40" id="vsT-un-TeO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="obi-UV-PVt" secondAttribute="trailing" constant="40" id="yaa-xz-Go5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MyAlbumBtn" width="550.5" height="158"/>
+        <image name="NewAlbumBtn" width="550" height="157"/>
+        <image name="ballon" width="96.5" height="104.5"/>
+        <image name="paper Airplane" width="906" height="659"/>
+    </resources>
+</document>
