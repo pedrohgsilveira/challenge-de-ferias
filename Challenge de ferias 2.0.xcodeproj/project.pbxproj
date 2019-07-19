@@ -8,22 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		D9AE340A22DA1ABD00F33C53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE340922DA1ABD00F33C53 /* AppDelegate.swift */; };
-		D9AE340C22DA1ABD00F33C53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE340B22DA1ABD00F33C53 /* ViewController.swift */; };
 		D9AE340F22DA1ABD00F33C53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9AE340D22DA1ABD00F33C53 /* Main.storyboard */; };
 		D9AE341222DA1ABD00F33C53 /* Challenge_de_ferias_2_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9AE341022DA1ABD00F33C53 /* Challenge_de_ferias_2_0.xcdatamodeld */; };
 		D9AE341422DA1ABE00F33C53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AE341322DA1ABE00F33C53 /* Assets.xcassets */; };
 		D9AE341722DA1ABE00F33C53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9AE341522DA1ABE00F33C53 /* LaunchScreen.storyboard */; };
+		D9AE343C22DA200300F33C53 /* ImagesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE343B22DA200300F33C53 /* ImagesControl.swift */; };
+		D9AE346222DA3A1000F33C53 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE346122DA3A1000F33C53 /* Singleton.swift */; };
+		D9AE346422DA3D4E00F33C53 /* DataModifiedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE346322DA3D4E00F33C53 /* DataModifiedDelegate.swift */; };
+		D9AE346622DA429A00F33C53 /* ModelStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE346522DA429A00F33C53 /* ModelStatus.swift */; };
+		D9AE346822DBE4F200F33C53 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE346722DBE4F200F33C53 /* MainViewController.swift */; };
+		D9AE346D22DCE87A00F33C53 /* PhotoCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE346922DCE87A00F33C53 /* PhotoCard+CoreDataClass.swift */; };
+		D9AE346E22DCE87A00F33C53 /* PhotoCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE346A22DCE87A00F33C53 /* PhotoCard+CoreDataProperties.swift */; };
+		D9AE346F22DCE87A00F33C53 /* PhotoAlbum+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE346B22DCE87A00F33C53 /* PhotoAlbum+CoreDataClass.swift */; };
+		D9AE347022DCE87A00F33C53 /* PhotoAlbum+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AE346C22DCE87A00F33C53 /* PhotoAlbum+CoreDataProperties.swift */; };
+		D9BAA9C322DE6BF700823F15 /* AlbumsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9C222DE6BF700823F15 /* AlbumsCollectionViewController.swift */; };
+		D9BAA9C522DE6C1200823F15 /* AlbumsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9C422DE6C1200823F15 /* AlbumsCollectionViewCell.swift */; };
+		D9BAA9CB22DE71BC00823F15 /* TypeOfCardSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9CA22DE71BC00823F15 /* TypeOfCardSelector.swift */; };
+		D9BAA9CD22DF892A00823F15 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9CC22DF892900823F15 /* AlbumsViewController.swift */; };
+		D9BAA9CF22DF904600823F15 /* AlbumsCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9CE22DF904600823F15 /* AlbumsCreatorViewController.swift */; };
+		D9BAA9D122DF960900823F15 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9D022DF960900823F15 /* ImagePicker.swift */; };
+		D9BAA9D422E0E7F200823F15 /* GuedesUIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9D222E0E7F200823F15 /* GuedesUIImagePickerController.swift */; };
+		D9BAA9D522E0E7F200823F15 /* GuedesUIImagePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BAA9D322E0E7F200823F15 /* GuedesUIImagePickerController.xib */; };
+		D9BAA9D722E0EC8300823F15 /* InsideAlbunsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9D622E0EC8300823F15 /* InsideAlbunsCollectionViewController.swift */; };
+		D9BAA9D922E0F57300823F15 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BAA9D822E0F57300823F15 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D9AE340622DA1ABD00F33C53 /* Challenge de ferias 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Challenge de ferias 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9AE340922DA1ABD00F33C53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9AE340B22DA1ABD00F33C53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D9AE340E22DA1ABD00F33C53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9AE341122DA1ABD00F33C53 /* Challenge_de_ferias_2_0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Challenge_de_ferias_2_0.xcdatamodel; sourceTree = "<group>"; };
 		D9AE341322DA1ABE00F33C53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9AE341622DA1ABE00F33C53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9AE341822DA1ABE00F33C53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9AE343B22DA200300F33C53 /* ImagesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesControl.swift; sourceTree = "<group>"; };
+		D9AE346122DA3A1000F33C53 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		D9AE346322DA3D4E00F33C53 /* DataModifiedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModifiedDelegate.swift; sourceTree = "<group>"; };
+		D9AE346522DA429A00F33C53 /* ModelStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStatus.swift; sourceTree = "<group>"; };
+		D9AE346722DBE4F200F33C53 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D9AE346922DCE87A00F33C53 /* PhotoCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PhotoCard+CoreDataClass.swift"; path = "../../PhotoCard+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D9AE346A22DCE87A00F33C53 /* PhotoCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PhotoCard+CoreDataProperties.swift"; path = "../../PhotoCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D9AE346B22DCE87A00F33C53 /* PhotoAlbum+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PhotoAlbum+CoreDataClass.swift"; path = "../../PhotoAlbum+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D9AE346C22DCE87A00F33C53 /* PhotoAlbum+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PhotoAlbum+CoreDataProperties.swift"; path = "../../PhotoAlbum+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D9BAA9C222DE6BF700823F15 /* AlbumsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCollectionViewController.swift; sourceTree = "<group>"; };
+		D9BAA9C422DE6C1200823F15 /* AlbumsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D9BAA9CA22DE71BC00823F15 /* TypeOfCardSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCardSelector.swift; sourceTree = "<group>"; };
+		D9BAA9CC22DF892900823F15 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		D9BAA9CE22DF904600823F15 /* AlbumsCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCreatorViewController.swift; sourceTree = "<group>"; };
+		D9BAA9D022DF960900823F15 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D9BAA9D222E0E7F200823F15 /* GuedesUIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuedesUIImagePickerController.swift; sourceTree = "<group>"; };
+		D9BAA9D322E0E7F200823F15 /* GuedesUIImagePickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuedesUIImagePickerController.xib; sourceTree = "<group>"; };
+		D9BAA9D622E0EC8300823F15 /* InsideAlbunsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideAlbunsCollectionViewController.swift; sourceTree = "<group>"; };
+		D9BAA9D822E0F57300823F15 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +92,65 @@
 		D9AE340822DA1ABD00F33C53 /* Challenge de ferias 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				D9AE342122DA1AF500F33C53 /* View */,
+				D9AE342022DA1AF200F33C53 /* Controllers */,
+				D9AE341F22DA1AEF00F33C53 /* Model */,
+				D9AE341E22DA1AEA00F33C53 /* Subclasses */,
 				D9AE340922DA1ABD00F33C53 /* AppDelegate.swift */,
-				D9AE340B22DA1ABD00F33C53 /* ViewController.swift */,
-				D9AE340D22DA1ABD00F33C53 /* Main.storyboard */,
 				D9AE341322DA1ABE00F33C53 /* Assets.xcassets */,
 				D9AE341522DA1ABE00F33C53 /* LaunchScreen.storyboard */,
 				D9AE341822DA1ABE00F33C53 /* Info.plist */,
-				D9AE341022DA1ABD00F33C53 /* Challenge_de_ferias_2_0.xcdatamodeld */,
 			);
 			path = "Challenge de ferias 2.0";
+			sourceTree = "<group>";
+		};
+		D9AE341E22DA1AEA00F33C53 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				D9AE343B22DA200300F33C53 /* ImagesControl.swift */,
+				D9AE346122DA3A1000F33C53 /* Singleton.swift */,
+				D9AE346322DA3D4E00F33C53 /* DataModifiedDelegate.swift */,
+				D9AE346522DA429A00F33C53 /* ModelStatus.swift */,
+				D9BAA9D022DF960900823F15 /* ImagePicker.swift */,
+				D9BAA9D222E0E7F200823F15 /* GuedesUIImagePickerController.swift */,
+				D9BAA9D322E0E7F200823F15 /* GuedesUIImagePickerController.xib */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
+		D9AE341F22DA1AEF00F33C53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D9AE346922DCE87A00F33C53 /* PhotoCard+CoreDataClass.swift */,
+				D9AE346A22DCE87A00F33C53 /* PhotoCard+CoreDataProperties.swift */,
+				D9AE346B22DCE87A00F33C53 /* PhotoAlbum+CoreDataClass.swift */,
+				D9AE346C22DCE87A00F33C53 /* PhotoAlbum+CoreDataProperties.swift */,
+				D9AE341022DA1ABD00F33C53 /* Challenge_de_ferias_2_0.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D9AE342022DA1AF200F33C53 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D9AE346722DBE4F200F33C53 /* MainViewController.swift */,
+				D9BAA9C222DE6BF700823F15 /* AlbumsCollectionViewController.swift */,
+				D9BAA9C422DE6C1200823F15 /* AlbumsCollectionViewCell.swift */,
+				D9BAA9CA22DE71BC00823F15 /* TypeOfCardSelector.swift */,
+				D9BAA9CC22DF892900823F15 /* AlbumsViewController.swift */,
+				D9BAA9CE22DF904600823F15 /* AlbumsCreatorViewController.swift */,
+				D9BAA9D622E0EC8300823F15 /* InsideAlbunsCollectionViewController.swift */,
+				D9BAA9D822E0F57300823F15 /* PhotoCollectionViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D9AE342122DA1AF500F33C53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D9AE340D22DA1ABD00F33C53 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +213,7 @@
 			files = (
 				D9AE341722DA1ABE00F33C53 /* LaunchScreen.storyboard in Resources */,
 				D9AE341422DA1ABE00F33C53 /* Assets.xcassets in Resources */,
+				D9BAA9D522E0E7F200823F15 /* GuedesUIImagePickerController.xib in Resources */,
 				D9AE340F22DA1ABD00F33C53 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +225,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9AE340C22DA1ABD00F33C53 /* ViewController.swift in Sources */,
+				D9BAA9D422E0E7F200823F15 /* GuedesUIImagePickerController.swift in Sources */,
+				D9BAA9D922E0F57300823F15 /* PhotoCollectionViewCell.swift in Sources */,
+				D9AE343C22DA200300F33C53 /* ImagesControl.swift in Sources */,
+				D9AE346622DA429A00F33C53 /* ModelStatus.swift in Sources */,
+				D9BAA9C322DE6BF700823F15 /* AlbumsCollectionViewController.swift in Sources */,
+				D9BAA9D122DF960900823F15 /* ImagePicker.swift in Sources */,
+				D9AE346822DBE4F200F33C53 /* MainViewController.swift in Sources */,
+				D9BAA9CB22DE71BC00823F15 /* TypeOfCardSelector.swift in Sources */,
+				D9AE346E22DCE87A00F33C53 /* PhotoCard+CoreDataProperties.swift in Sources */,
+				D9BAA9D722E0EC8300823F15 /* InsideAlbunsCollectionViewController.swift in Sources */,
 				D9AE341222DA1ABD00F33C53 /* Challenge_de_ferias_2_0.xcdatamodeld in Sources */,
 				D9AE340A22DA1ABD00F33C53 /* AppDelegate.swift in Sources */,
+				D9AE346222DA3A1000F33C53 /* Singleton.swift in Sources */,
+				D9BAA9C522DE6C1200823F15 /* AlbumsCollectionViewCell.swift in Sources */,
+				D9AE347022DCE87A00F33C53 /* PhotoAlbum+CoreDataProperties.swift in Sources */,
+				D9AE346F22DCE87A00F33C53 /* PhotoAlbum+CoreDataClass.swift in Sources */,
+				D9AE346422DA3D4E00F33C53 /* DataModifiedDelegate.swift in Sources */,
+				D9BAA9CF22DF904600823F15 /* AlbumsCreatorViewController.swift in Sources */,
+				D9AE346D22DCE87A00F33C53 /* PhotoCard+CoreDataClass.swift in Sources */,
+				D9BAA9CD22DF892A00823F15 /* AlbumsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
