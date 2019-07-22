@@ -24,7 +24,7 @@ class AlbumsViewController: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var mainImage: UIImageView!
-    var myImages:[UIImage] = []
+
     let dF:DateFormatter = DateFormatter()
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,47 +32,32 @@ class AlbumsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidLoad()
-        if let way = currentAlbum?.completePhoto{
-            for i in 0...way.count - 1{
-                guard let path = way[i] as? PhotoCard else {return}
-                if let myPath = path.photoPath{
-                    let answer:String? = ImagesControl.getFile(filePathWithoutExtension: myPath)
-                    if let answer = answer, let images = UIImage(contentsOfFile: answer){
-                        myImages.append(images)
-                        mainImage.image = myImages[0]
-                    }
-                }
-            }
-        }
+        super.viewWillAppear(animated)
         
-        var images:[UIImage] = []
-        var imagesPath:[String] = []
-        guard let currAlbum = currentAlbum else { return }
-        guard let completePhoto = currAlbum.completePhoto else { return }
-        for i in 0...completePhoto.count - 1 {
-            if let photoNumber = currentAlbum?.completePhoto![i]{
-                guard let photoPath = photoNumber as? PhotoCard else {return}
-                guard let currentPhotoPath = photoPath.photoPath else {return}
-                imagesPath.append(currentPhotoPath)
-                for i in 0...imagesPath.count - 1{
-                    let currentImage:UIImage = UIImage(contentsOfFile: imagesPath[i])!
-                    images.append(currentImage)
-                }
-            }
-        }
-        
+//        var myImagesPath:[String] = []
+//        var firstImagePath:String?
+//
+//        for i in currentAlbum?.completePhoto?.array as! [PhotoCard] {
+//            myImagesPath.append(i.photoPath!)
+//        }
+//        firstImagePath = myImagesPath[0]
+//
+//        if let firstImagesPath = firstImagePath{
+//            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: firstImagesPath)
+//            if let answer = answer{
+//                mainImage.image = UIImage(contentsOfFile: answer)
+//            }
+//        }
         
         if let currentAlbum = currentAlbum{
             dF.dateFormat = "dd-MM-yy hh:mm"
             lblDate.text = dF.string(from: currentAlbum.date! as Date)
             lblName.text = currentAlbum.name
         }
+        else{
+            navigationItem.title = "Error"
+        }
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

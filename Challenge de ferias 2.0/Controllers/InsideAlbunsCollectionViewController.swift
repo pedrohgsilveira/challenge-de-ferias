@@ -13,7 +13,7 @@ private let reuseIdentifier = "Cell"
 class InsideAlbunsCollectionViewController: UIViewController, UICollectionViewDelegateFlowLayout, DataModifiedDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     private var albumPhotos:[PhotoCard] = []
-    private var album:PhotoAlbum?
+//    private var currentAlbum:PhotoAlbum?
     var albumPhotoPath: IndexPath?
     
     @IBOutlet weak var photosColletionView: UICollectionView!
@@ -28,7 +28,7 @@ class InsideAlbunsCollectionViewController: UIViewController, UICollectionViewDe
 
     }
     
-    private let reuseIdentifier = "photoCell"
+    private let cellReuseIdentifier = "photoCell"
     private var sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
     private let itemsPerRow: CGFloat = 1
@@ -53,23 +53,18 @@ class InsideAlbunsCollectionViewController: UIViewController, UICollectionViewDe
     }
     
     
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if album != nil{
-            
-            let cell = self.photosColletionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
-            let currentPhoto = albumPhotos[indexPath.row]
-            
-            if let path = currentPhoto.photoPath{
-                let answer:String? = ImagesControl.getFile(filePathWithoutExtension: path)
-                if let answer = answer{
-                    cell.photoImageView.image = UIImage(contentsOfFile: answer)
-                    return cell
-                }
+        var cell = self.photosColletionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        let currentPhoto = albumPhotos[indexPath.row]
+        if let path = currentPhoto.photoPath{
+            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: path)
+            if let answer = answer{
+                cell.photoImageView.image = UIImage(contentsOfFile: answer)
             }
-            
         }
-        return UICollectionViewCell()
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

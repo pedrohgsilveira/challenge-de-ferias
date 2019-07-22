@@ -12,6 +12,7 @@ import CoreData
 public class ModelStatus{
     public private(set) var successful:Bool
     public private(set) var description:String
+    public var albumIdentifier:PhotoAlbum?
 
     init(successful:Bool, description:String) {
         self.successful = successful

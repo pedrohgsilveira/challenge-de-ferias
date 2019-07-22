@@ -47,9 +47,6 @@
                                                     <state key="normal" title="Show All">
                                                         <color key="titleColor" red="0.5450980392" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
-                                                    <connections>
-                                                        <segue destination="gUC-yD-JqB" kind="show" id="nqu-BI-bYb"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlI-f1-a4t">
                                                     <rect key="frame" x="8" y="4" width="83" height="29"/>
@@ -127,12 +124,13 @@
                     <navigationItem key="navigationItem" id="0BR-95-dt6">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="aLf-Sf-5jq">
                             <connections>
-                                <segue destination="UFP-N2-C5n" kind="show" id="ghu-uw-lkq"/>
+                                <segue destination="dUm-ZX-6Ij" kind="presentation" id="1I6-1d-LeZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="albumsColletionVIew" destination="IIR-DU-Gbe" id="LES-Sc-fz0"/>
+                        <segue destination="gUC-yD-JqB" kind="show" identifier="Show Album" id="dyn-aI-so4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -194,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yaa-Tt-ZG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2419" y="103"/>
+            <point key="canvasLocation" x="958" y="828"/>
         </scene>
         <!--Albums Creator View Controller-->
         <scene sceneID="O84-85-UrE">
@@ -316,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1M-lL-aUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="753"/>
+            <point key="canvasLocation" x="2890" y="21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QTd-7g-7he">
@@ -334,7 +332,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7U-iR-Trl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="753"/>
+            <point key="canvasLocation" x="1939" y="21"/>
         </scene>
         <!--Inside Albuns Collection View Controller-->
         <scene sceneID="KGd-Bo-YoW">
@@ -386,6 +384,7 @@
                             <constraint firstItem="Q9b-Xq-7Is" firstAttribute="leading" secondItem="cbJ-Wm-UmR" secondAttribute="leadingMargin" id="6xB-db-qnh"/>
                             <constraint firstItem="Q9b-Xq-7Is" firstAttribute="top" secondItem="cbJ-Wm-UmR" secondAttribute="topMargin" id="7rI-QG-ppc"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="WY4-Ui-hnJ"/>
                     </view>
                     <connections>
                         <outlet property="photosColletionView" destination="Q9b-Xq-7Is" id="4LU-kx-Btg"/>
@@ -393,7 +392,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMq-Me-nTN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3608.6956521739135" y="341.18303571428572"/>
+            <point key="canvasLocation" x="1999" y="828"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="soi-93-hJv">
@@ -417,7 +416,4 @@
     <resources>
         <image name="photoPlaceHolder" width="158" height="139"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="ghu-uw-lkq"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -69,9 +69,7 @@ public class ModelManager{
             return ModelStatus(successful: false, description: "Não foi possivel criar um novo Album")
         }
         notify()
-        let response = ModelStatus(successful: true)
-        response.albumIdentifier = newAlbum
-        return response
+        return ModelStatus(successful: true)
     }
     
     public func editAlbum(target:PhotoAlbum, newName:String?, newDate: NSDate?) -> ModelStatus{
@@ -114,11 +112,11 @@ public class ModelManager{
     }
     
     
-    public func addPhoto(target: PhotoAlbum, photo: UIImage?) -> ModelStatus{
+    public func addPhoto(target: PhotoAlbum, photo: UIImage?, name: String, date: NSDate?) -> ModelStatus{
         
         let newPhoto = NSEntityDescription.insertNewObject(forEntityName: "PhotoCard", into: context) as! PhotoCard
         //!!!!!!!!!!!!!!!!!!!!!!!!!
-        newPhoto.feed(photo: photo)
+        newPhoto.feed(name: name, photo: photo, date: date!)
         target.addToCompletePhoto(newPhoto)
         _photoCard.append(newPhoto)
         do{

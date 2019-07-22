@@ -12,6 +12,9 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
 
     
     var currentAlbum:PhotoAlbum?
+    var createdAlbum:PhotoAlbum? = nil
+    var albumPhotos:[PhotoCard] = []
+    var albumPhoto:PhotoCard?
     
     @IBOutlet weak var txtFieldName: UITextField!
     @IBOutlet weak var photosCountlbl: UILabel!
@@ -55,37 +58,35 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        var teste:Bool = false
+        
         if let alb = currentAlbum{
             btnDone.isEnabled = true
             txtFieldName.text = alb.name
-            
-            if let way = alb.completePhoto{
-                for i in 0...way.count - 1 {
-                    print(way.count)
-                    guard let path = way[i] as? PhotoCard else {return}
-                    if let myPath = path.photoPath{
-                        let answer:String? = ImagesControl.getFile(filePathWithoutExtension: myPath)
-                        if let answer = answer, let images = UIImage(contentsOfFile: answer){
-                            myImages.append(images)
-                        }
-                    }
+            datePicker.date = alb.date! as Date
+        }
+        if let photoCard = albumPhoto{
+            teste = true
+            print(teste)
+            if let path = photoCard.photoPath{
+                let answer:String? = ImagesControl.getFile(filePathWithoutExtension: path)
+                if let answer = answer{
+                    lastImage.image = UIImage(contentsOfFile: answer)
+                    myImages.append(lastImage.image!)
+                    albumPhotos.append(photoCard)
                 }
             }
         }
     }
-    
-    
-    
-    
+
     
     @IBAction func photoSelector(_ sender: UIButton) {
             imgPicker = ImagePicker()
-        
             imgPicker.pickImage(self) { (image) in
-                self.myImages.append(image)
-                self.imgChanged = true
-                self.lastImage.image = self.myImages[self.myImages.count - 1]
+                self.lastImage.image = image
+                self.myImages.append(self.lastImage.image!)
                 self.photosCountlbl.text = "\(self.myImages.count)"
+                self.imgChanged = true
             }
     }
 
@@ -95,45 +96,40 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func btnDone(_ sender: Any) {
-
-        var newPhoto:UIImage? = nil
-        if(imgChanged){
-            newPhoto = lastImage.image
-            guard let currentAlbum = currentAlbum else {return}
-            guard let newPhoto = newPhoto else {return}
-        }
         
-        var teste:Bool = false
+        var newPhotos:[UIImage]? = []
+        
+        if(imgChanged){
+            
+            for i in 0...myImages.count - 1{
+                newPhotos?.append(myImages[i])
+            }
+            
 
+        }
 
         if let album = currentAlbum{
             let albumStatus:ModelStatus = ModelManager.shared().editAlbum(target: album, newName: txtFieldName.text, newDate: datePicker.date as NSDate)
-            print(teste)
             if(!albumStatus.successful){
                 fatalError(albumStatus.description)
             }
-
         }
         else{
-            print(teste)
-            if let txt = txtFieldName.text{
-                if myImages.count > 0{
-                    for i in 0...myImages.count - 1{
-                        teste = true
-                        let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: currentAlbum!, photo: myImages[i], name: "Mudar", date: nil)
-                        if(!photoStatus.successful){
-                            fatalError(photoStatus.description)
-                        }
-                    }
-                    print(teste)
-                }
-                print(teste)
-                let albumStatus:ModelStatus = ModelManager.shared().addAlbum(name: txt, date: datePicker.date as NSDate)
-                if(!albumStatus.successful){
+            let albumStatus:ModelStatus = ModelManager.shared().addAlbum(name: txtFieldName.text!, date: datePicker!.date as NSDate)
+            print(albumPhotos.count)
+            if (!albumStatus.successful){
+                fatalError(albumStatus.description)
+            }
+            for i in 0...newPhotos!.count - 1{
+                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: newPhotos![i])
+                if (!photoStatus.successful){
                     fatalError(albumStatus.description)
                 }
+
             }
-            print(teste)
+
+
+            
         }
         self.dismiss(animated: true, completion: nil)
 

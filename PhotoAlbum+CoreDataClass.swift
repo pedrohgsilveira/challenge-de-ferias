@@ -23,6 +23,7 @@ public class PhotoAlbum: NSManagedObject {
     
         self.name = name
         self.date = date
+        
     }
     
     

@@ -11,12 +11,32 @@ import UIKit
 
 class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegateFlowLayout, DataModifiedDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
-//    private var coverPhotos:[PhotoCard] = []
     private var albums:[PhotoAlbum] = []
+    private var albumPhotos:[PhotoCard] = []
     var albumPath:IndexPath?
     var coverPhotos:[UIImage] = []
+    private var viwerController:AlbumsViewController?
+    var index:Int?
     
     @IBOutlet weak var albumsColletionVIew: UICollectionView!
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? AlbumsViewController{
+                viwerController = controller
+            if let index = index {
+                viwerController?.currentAlbum = albums[index]
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        index = indexPath.item
+        self.performSegue(withIdentifier: "Show Album", sender: indexPath.item)
+    }
+    
+    
     
     func DataModified() {
         albumsColletionVIew.reloadData()
@@ -42,6 +62,8 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         getData()
 
     }
+    
+   
 
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -58,11 +80,7 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         let currentAlbum = albums[indexPath.row]
         cell.albumNamelbl.text = currentAlbum.name
         let numberOfPhotos:Int = cell.photoCardsColletion.count
-        for i in 0...numberOfPhotos - 1{
-            if let photoCardColletion = cell.photoCardsColletion[i].image{
-                coverPhotos[i] = photoCardColletion
-            }
-        }
+        
         if let way = currentAlbum.completePhoto, way.count > 0{
             for i in 0...way.count - 1{
                 if let path = way[i] as? PhotoCard{
@@ -77,6 +95,11 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
                 }
             }
         }
+        
+        for i in 0...numberOfPhotos - 1{
+            cell.photoCardsColletion[i].image = coverPhotos[i]
+        }
+        
         return cell
     }
     
@@ -104,6 +127,5 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         return sectionInsets.left
     }
     
-
 
 }
