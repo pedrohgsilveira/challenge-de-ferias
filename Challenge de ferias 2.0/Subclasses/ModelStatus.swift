@@ -8,11 +8,14 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 public class ModelStatus{
     public private(set) var successful:Bool
     public private(set) var description:String
     public var albumIdentifier:PhotoAlbum?
+    private var df = DateFormatter()
+    
 
     init(successful:Bool, description:String) {
         self.successful = successful

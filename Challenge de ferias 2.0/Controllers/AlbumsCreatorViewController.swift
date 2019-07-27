@@ -21,7 +21,7 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var lastImage: UIImageView!
     
-    private var imgChanged:Bool = false
+//    private var imgChanged:Bool = false
     var imgPicker:ImagePicker!
     var myImages:[UIImage] = []
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -58,22 +58,19 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        var teste:Bool = false
         
         if let alb = currentAlbum{
             btnDone.isEnabled = true
             txtFieldName.text = alb.name
             datePicker.date = alb.date! as Date
-        }
-        if let photoCard = albumPhoto{
-            teste = true
-            print(teste)
-            if let path = photoCard.photoPath{
-                let answer:String? = ImagesControl.getFile(filePathWithoutExtension: path)
-                if let answer = answer{
-                    lastImage.image = UIImage(contentsOfFile: answer)
-                    myImages.append(lastImage.image!)
-                    albumPhotos.append(photoCard)
+            
+            if let photoCard = albumPhoto{
+                if let path = photoCard.photoPath{
+                    let answer:String? = ImagesControl.getFile(filePathWithoutExtension: path)
+                    if let answer = answer{
+                        lastImage.image = UIImage(contentsOfFile: answer)
+                        myImages.append(lastImage.image!)
+                    }
                 }
             }
         }
@@ -86,7 +83,6 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
                 self.lastImage.image = image
                 self.myImages.append(self.lastImage.image!)
                 self.photosCountlbl.text = "\(self.myImages.count)"
-                self.imgChanged = true
             }
     }
 
@@ -97,16 +93,7 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func btnDone(_ sender: Any) {
         
-        var newPhotos:[UIImage]? = []
-        
-        if(imgChanged){
-            
-            for i in 0...myImages.count - 1{
-                newPhotos?.append(myImages[i])
-            }
-            
 
-        }
 
         if let album = currentAlbum{
             let albumStatus:ModelStatus = ModelManager.shared().editAlbum(target: album, newName: txtFieldName.text, newDate: datePicker.date as NSDate)
@@ -120,8 +107,8 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
             if (!albumStatus.successful){
                 fatalError(albumStatus.description)
             }
-            for i in 0...newPhotos!.count - 1{
-                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: newPhotos![i])
+            for i in 0...myImages.count - 1{
+                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: myImages[i])
                 if (!photoStatus.successful){
                     fatalError(albumStatus.description)
                 }

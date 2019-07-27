@@ -87,18 +87,17 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
                     if let photoPath = path.photoPath{
                         let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
                         if let answer = answer, let images = UIImage(contentsOfFile: answer){
-                            for _ in 0...numberOfPhotos - 1{
-                                coverPhotos.append(images)
-                            }
+                            coverPhotos.append(images)
+                           
                         }
                     }
                 }
             }
+            for i in 0...numberOfPhotos - 1{
+                cell.photoCardsColletion[i].image = coverPhotos[i]
+            }
         }
-        
-        for i in 0...numberOfPhotos - 1{
-            cell.photoCardsColletion[i].image = coverPhotos[i]
-        }
+
         
         return cell
     }

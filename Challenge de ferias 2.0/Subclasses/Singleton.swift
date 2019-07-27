@@ -117,7 +117,6 @@ public class ModelManager{
     public func addPhoto(target: PhotoAlbum, photo: UIImage?) -> ModelStatus{
         
         let newPhoto = NSEntityDescription.insertNewObject(forEntityName: "PhotoCard", into: context) as! PhotoCard
-        //!!!!!!!!!!!!!!!!!!!!!!!!!
         newPhoto.feed(photo: photo)
         target.addToCompletePhoto(newPhoto)
         _photoCard.append(newPhoto)
