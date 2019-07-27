@@ -14,7 +14,6 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
     private var albums:[PhotoAlbum] = []
     private var albumPhotos:[PhotoCard] = []
     var albumPath:IndexPath?
-    var coverPhotos:[UIImage] = []
     private var viwerController:AlbumsViewController?
     var index:Int?
     
@@ -80,8 +79,8 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         let cell = self.albumsColletionVIew.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumsCollectionViewCell
         let currentAlbum = albums[indexPath.row]
         cell.albumNamelbl.text = currentAlbum.name
-        let numberOfPhotos:Int = cell.photoCardsColletion.count
-        
+        var coverPhoto:UIImage?
+        var coverPhotos:[UIImage] = []
         
         switch currentAlbum.completePhoto?.count {
         case 0:
@@ -99,32 +98,44 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
                 }
             }
         case 2, 3, 4, 5:
+            
+            
+            if let way = currentAlbum.completePhoto{
+                for i in way{
+                    let path = i as? PhotoCard
+                        if let photoPath = path?.photoPath{
+                            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
+                            if let answer = answer{
+                                coverPhoto = UIImage(contentsOfFile: answer)
+                                coverPhotos.append(coverPhoto!)
+                                
+                            }
+                        }
+                }
+            }
+            
+            for i in 0...coverPhotos.count - 1 {
+                cell.photoCardsColletion[i].image = coverPhotos[i]
+            }
+
+        default:
+            
             if let way = currentAlbum.completePhoto{
                 for i in way{
                     let path = i as? PhotoCard
                     if let photoPath = path?.photoPath{
                         let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
                         if let answer = answer{
-                            for c in 0...way.count - 1 {
-                                cell.photoCardsColletion[c].image = UIImage(contentsOfFile: answer)
-                            }
+                            coverPhoto = UIImage(contentsOfFile: answer)
+                            coverPhotos.append(coverPhoto!)
+                            
                         }
                     }
                 }
             }
-        default:
-            if let way = currentAlbum.completePhoto{
-                for i in way{
-                    let path = i as? PhotoCard
-                    if let photoPath = path?.photoPath{
-                        let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
-                        if let answer = answer{
-                            for c in 0...4 {
-                                cell.photoCardsColletion[c].image = UIImage(contentsOfFile: answer)
-                            }
-                        }
-                    }
-                }
+            
+            for i in 0...4 {
+                cell.photoCardsColletion[i].image = coverPhotos[i]
             }
     
         }

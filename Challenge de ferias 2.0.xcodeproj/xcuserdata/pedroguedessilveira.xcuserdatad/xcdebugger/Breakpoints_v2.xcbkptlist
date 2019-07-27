@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCreatorViewController.swift"
-            timestampString = "585941535.079621"
+            timestampString = "585957091.1586699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -22,11 +22,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCreatorViewController.swift"
-            timestampString = "585941535.080038"
+            timestampString = "585957091.158766"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCreatorViewController.swift"
-            timestampString = "585941535.0802881"
+            timestampString = "585957091.1588269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCreatorViewController.swift"
-            timestampString = "585941535.080557"
+            timestampString = "585957091.158882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCreatorViewController.swift"
-            timestampString = "585941535.080826"
+            timestampString = "585957091.158932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCreatorViewController.swift"
-            timestampString = "585941535.081084"
+            timestampString = "585957091.158983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCreatorViewController.swift"
-            timestampString = "585941535.08134"
+            timestampString = "585957091.159031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -118,11 +118,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsViewController.swift"
-            timestampString = "585941535.081565"
+            timestampString = "585957091.159081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCollectionViewController.swift"
-            timestampString = "585941535.0816129"
+            timestampString = "585957091.159133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCollectionViewController.swift"
-            timestampString = "585941535.081655"
+            timestampString = "585957091.159638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Locations>
@@ -170,12 +170,12 @@
                   moduleName = "Challenge de ferias 2.0"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/pedroguedessilveira/Documents/projetos/PhotoAPP/Challenge%20de%20ferias%202.0/Controllers/AlbumsCollectionViewController.swift"
-                  timestampString = "585941535.165693"
+                  timestampString = "585955681.026401"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "5010">
+                  offsetFromSymbolStart = "4520">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -185,12 +185,12 @@
                   moduleName = "Challenge de ferias 2.0"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/pedroguedessilveira/Documents/projetos/PhotoAPP/Challenge%20de%20ferias%202.0/Controllers/AlbumsCollectionViewController.swift"
-                  timestampString = "585941535.167757"
+                  timestampString = "585955681.028717"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "5149">
+                  offsetFromSymbolStart = "4645">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -200,12 +200,12 @@
                   moduleName = "Challenge de ferias 2.0"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/pedroguedessilveira/Documents/projetos/PhotoAPP/Challenge%20de%20ferias%202.0/Controllers/AlbumsCollectionViewController.swift"
-                  timestampString = "585941535.170298"
+                  timestampString = "585955681.030267"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "5288">
+                  offsetFromSymbolStart = "4770">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -215,12 +215,12 @@
                   moduleName = "Challenge de ferias 2.0"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/pedroguedessilveira/Documents/projetos/PhotoAPP/Challenge%20de%20ferias%202.0/Controllers/AlbumsCollectionViewController.swift"
-                  timestampString = "585941535.172539"
+                  timestampString = "585955681.031654"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "5430">
+                  offsetFromSymbolStart = "4895">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -232,11 +232,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge de ferias 2.0/Controllers/AlbumsCollectionViewController.swift"
-            timestampString = "585941535.08169"
+            timestampString = "585957091.1599309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Challenge de ferias 2.0/Controllers/AlbumsCollectionViewController.swift"
+            timestampString = "585957091.160184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Challenge de ferias 2.0/Controllers/AlbumsCollectionViewController.swift"
+            timestampString = "585957091.1604199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Challenge de ferias 2.0/Controllers/AlbumsCollectionViewController.swift"
+            timestampString = "585957091.16067"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Challenge de ferias 2.0/Controllers/AlbumsCollectionViewController.swift"
+            timestampString = "585957091.160935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
