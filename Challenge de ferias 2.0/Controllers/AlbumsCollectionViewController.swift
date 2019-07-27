@@ -25,6 +25,7 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         if let controller = segue.destination as? AlbumsViewController{
                 viwerController = controller
             if let index = index {
+
                 viwerController?.currentAlbum = albums[index]
             }
         }
@@ -81,23 +82,52 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         cell.albumNamelbl.text = currentAlbum.name
         let numberOfPhotos:Int = cell.photoCardsColletion.count
         
-        if let way = currentAlbum.completePhoto, way.count > 0{
-            for i in 0...way.count - 1{
-                if let path = way[i] as? PhotoCard{
-                    if let photoPath = path.photoPath{
+        
+        switch currentAlbum.completePhoto?.count {
+        case 0:
+            cell.photoCardsColletion = []
+        case 1:
+            if let way = currentAlbum.completePhoto{
+                for i in way{
+                    let path = i as? PhotoCard
+                    if let photoPath = path?.photoPath{
                         let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
-                        if let answer = answer, let images = UIImage(contentsOfFile: answer){
-                            coverPhotos.append(images)
-                           
+                        if let answer = answer{
+                            cell.photoCardsColletion[0].image = UIImage(contentsOfFile: answer)
                         }
                     }
                 }
             }
-            for i in 0...numberOfPhotos - 1{
-                cell.photoCardsColletion[i].image = coverPhotos[i]
+        case 2, 3, 4, 5:
+            if let way = currentAlbum.completePhoto{
+                for i in way{
+                    let path = i as? PhotoCard
+                    if let photoPath = path?.photoPath{
+                        let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
+                        if let answer = answer{
+                            for c in 0...way.count - 1 {
+                                cell.photoCardsColletion[c].image = UIImage(contentsOfFile: answer)
+                            }
+                        }
+                    }
+                }
             }
+        default:
+            if let way = currentAlbum.completePhoto{
+                for i in way{
+                    let path = i as? PhotoCard
+                    if let photoPath = path?.photoPath{
+                        let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
+                        if let answer = answer{
+                            for c in 0...4 {
+                                cell.photoCardsColletion[c].image = UIImage(contentsOfFile: answer)
+                            }
+                        }
+                    }
+                }
+            }
+    
         }
-
         
         return cell
     }

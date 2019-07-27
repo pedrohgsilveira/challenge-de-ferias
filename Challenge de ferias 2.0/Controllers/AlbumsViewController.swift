@@ -78,9 +78,19 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        var imagesPaths:[String] = []
+//        var imagesPaths:[String] = []
         
         let cell = self.photosCollectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        
+        if let currentAlbum = currentAlbum{
+            let currentPhotos = currentAlbum.completePhoto
+            let currentPhoto = currentPhotos![indexPath.item] as? PhotoCard
+            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: currentPhoto!.photoPath!)
+            if let answer = answer{
+                cell.photoImageView.image = UIImage(contentsOfFile: answer)
+            }
+        }
+        
         
 //        let currentPhoto = albumPhotos[indexPath.row]
 //        let answer:String? = ImagesControl.getFile(filePathWithoutExtension: currentPhoto.photoPath!)
@@ -88,26 +98,26 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
 //            cell.photoImageView.image = UIImage(contentsOfFile: answer)
 //
 //        }
-        if let currentAlbum = currentAlbum{
-            if let way = currentAlbum.completePhoto, way.count>0{
-                for i in 0...way.count - 1{
-                    if let path = way[i] as? PhotoCard{
-                        if let photoPath = path.photoPath{
-                            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
-                            if let answer = answer{
-                                imagesPaths.append(answer)
-                            }
-                        }
-                    }
-                }
-            }
-            
-            let imagePath = imagesPaths[indexPath.row]
-            
-            cell.photoImageView.image = UIImage(contentsOfFile: imagePath)
-
-            
-        }
+//        if let currentAlbum = currentAlbum{
+//            if let way = currentAlbum.completePhoto, way.count>0{
+//                for i in 0...way.count - 1{
+//                    if let path = way[i] as? PhotoCard{
+//                        if let photoPath = path.photoPath{
+//                            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
+//                            if let answer = answer{
+//                                imagesPaths.append(answer)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//
+//            let imagePath = imagesPaths[indexPath.row]
+//
+//            cell.photoImageView.image = UIImage(contentsOfFile: imagePath)
+//
+//
+//        }
         
         return cell
     }
