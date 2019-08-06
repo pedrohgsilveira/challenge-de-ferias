@@ -12,7 +12,6 @@ import UIKit
 class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegateFlowLayout, DataModifiedDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     private var albums:[PhotoAlbum] = []
-    private var albumPhotos:[PhotoCard] = []
     var albumPath:IndexPath?
     private var viwerController:AlbumsViewController?
     var index:Int?
@@ -44,12 +43,11 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     private func getData(){
-//        coverPhotos = ModelManager.shared().completePhoto
         albums = ModelManager.shared().albuns
     }
     
     private let reuseIdentifier = "AlbumCell"
-    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    private let sectionInsets = UIEdgeInsets(top: 30.0, left: 10.0, bottom: 30.0, right: 10.0)
     private let itemPerRow: CGFloat = 1
     
     
@@ -60,10 +58,12 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         albumsColletionVIew.delegate = self
         ModelManager.shared().addDelegate(newDelegate: self)
         getData()
-
+        
     }
     
-   
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        //...
+    }
 
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -79,84 +79,29 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         let cell = self.albumsColletionVIew.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumsCollectionViewCell
         let currentAlbum = albums[indexPath.row]
         cell.albumNamelbl.text = currentAlbum.name
-        var coverPhoto:UIImage?
-        var coverPhotos:[UIImage] = []
         
-        switch currentAlbum.completePhoto?.count {
-        case 0:
-            cell.photoCardsColletion = []
-        case 1:
-            if let way = currentAlbum.completePhoto{
-                for i in way{
-                    let path = i as? PhotoCard
-                    if let photoPath = path?.photoPath{
-                        let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
-                        if let answer = answer{
-                            cell.photoCardsColletion[0].image = UIImage(contentsOfFile: answer)
-                        }
-                    }
+        var contadorImagens:Int = 0
+        for photo in currentAlbum.completePhoto?.array as! [PhotoCard]{
+            if let imgPath = ImagesControl.getFile(filePathWithoutExtension: photo.photoPath!){
+                print(imgPath)
+                cell.photoCardsColletion[contadorImagens].image = UIImage(contentsOfFile: imgPath)
+                contadorImagens += 1
+                if contadorImagens == 5{
+                    break
                 }
             }
-        case 2, 3, 4, 5:
-            
-            
-            if let way = currentAlbum.completePhoto{
-                for i in way{
-                    let path = i as? PhotoCard
-                        if let photoPath = path?.photoPath{
-                            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
-                            if let answer = answer{
-                                coverPhoto = UIImage(contentsOfFile: answer)
-                                coverPhotos.append(coverPhoto!)
-                                
-                            }
-                        }
-                }
-            }
-            
-            for i in 0...coverPhotos.count - 1 {
-                cell.photoCardsColletion[i].image = coverPhotos[i]
-            }
-
-        default:
-            
-            if let way = currentAlbum.completePhoto{
-                for i in way{
-                    let path = i as? PhotoCard
-                    if let photoPath = path?.photoPath{
-                        let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
-                        if let answer = answer{
-                            coverPhoto = UIImage(contentsOfFile: answer)
-                            coverPhotos.append(coverPhoto!)
-                            
-                        }
-                    }
-                }
-            }
-            
-            for i in 0...4 {
-                cell.photoCardsColletion[i].image = coverPhotos[i]
-            }
-    
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath == albumPath{
-            var size = collectionView.bounds.size
-            size.height -= (sectionInsets.top + sectionInsets.bottom)
-            size.width -= (sectionInsets.left + sectionInsets.right)
-            let ratio = (size.height - view.frame.height) > (size.width - view.frame.width) ? (size.width - view.frame.width) : (size.height - view.frame.height)
-            return CGSize(width: view.frame.width - ratio, height: view.frame.height - ratio)
-        }
-        
+        let size = collectionView.bounds.size
         let paddingSpace = sectionInsets.left * (itemPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemPerRow
+        let heightPerItem = size.height / 4 + sectionInsets.top * 2.5
         
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        return CGSize(width: widthPerItem, height: heightPerItem)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -167,5 +112,10 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
         return sectionInsets.left
     }
     
-
+    @objc func onPan(indexPath: IndexPath){
+        let status:ModelStatus = ModelManager.shared().removeAlbum(rA: indexPath.row)
+        albumsColletionVIew.reloadData()
+        
+        
+    }
 }

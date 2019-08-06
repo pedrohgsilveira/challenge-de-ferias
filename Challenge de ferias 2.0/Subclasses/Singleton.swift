@@ -43,8 +43,8 @@ public class ModelManager{
     }
     
     private func notify(){
-        for delegates in delegates{
-            delegates.DataModified()
+        for delegate in delegates{
+            delegate.DataModified()
         }
     }
     
@@ -91,7 +91,12 @@ public class ModelManager{
     public func removeAlbum(rA: Int) -> ModelStatus{
         
         if rA < _albuns.count && rA >= 0{
-            context.delete(_albuns[rA])
+            let deletedAlbum = _albuns[rA]
+            for i in 0..<deletedAlbum.completePhoto!.count{
+                removePhotoCard(rPC: i)
+                
+            }
+            context.delete(deletedAlbum)
             _albuns.remove(at: rA)
             do{
                 try context.save()
@@ -131,28 +136,14 @@ public class ModelManager{
     }
     
     
-    
-//    public func addPhotoCard(target: PhotoAlbum) -> ModelStatus{
-//
-//        let photoCard = NSEntityDescription.insertNewObject(forEntityName: "PhotoCard", into: context) as! PhotoCard
-//        photoCard.name = String()
-//        photoCard.date = NSDate()
-//        target.addToCompletePhoto(photoCard)
-//        _photoCard.append(photoCard)
-//        do{
-//            try context.save()
-//            notify()
-//            return ModelStatus(successful: true)
-//        }catch{
-//            return ModelStatus(successful: false, description: "Não foi possivel criar um Photo Card")
-//        }
-//    }
-    
-    
     public func removePhotoCard(rPC: Int) -> ModelStatus{
         
         if rPC < _photoCard.count && rPC >= 0{
-            context.delete(_photoCard[rPC])
+            let deletedPhoto = _photoCard[rPC]
+            if let photoPath = deletedPhoto.photoPath{
+                ImagesControl.deleteImage(filePathWithoutExtension: photoPath)
+            }
+            context.delete(deletedPhoto)
             _photoCard.remove(at: rPC)
             do{
                 try context.save()
@@ -165,6 +156,7 @@ public class ModelManager{
         
         return ModelStatus(successful: false, description: "Não foi possivel encontrar o Photo Card" )
     }
+    
     
 }
 

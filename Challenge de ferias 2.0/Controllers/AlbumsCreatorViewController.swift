@@ -15,13 +15,13 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
     var createdAlbum:PhotoAlbum? = nil
     var albumPhotos:[PhotoCard] = []
     var albumPhoto:PhotoCard?
+
     
     @IBOutlet weak var txtFieldName: UITextField!
     @IBOutlet weak var photosCountlbl: UILabel!
     @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var lastImage: UIImageView!
     
-//    private var imgChanged:Bool = false
     var imgPicker:ImagePicker!
     var myImages:[UIImage] = []
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -75,13 +75,12 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-
     
     @IBAction func photoSelector(_ sender: UIButton) {
             imgPicker = ImagePicker()
-            imgPicker.pickImage(self) { (image) in
+        imgPicker.pickImage(self){ (image) in
                 self.lastImage.image = image
-                self.myImages.append(self.lastImage.image!)
+                self.myImages.append(image)
                 self.photosCountlbl.text = "\(self.myImages.count)"
             }
     }
@@ -92,9 +91,6 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func btnDone(_ sender: Any) {
-        
-
-
         if let album = currentAlbum{
             let albumStatus:ModelStatus = ModelManager.shared().editAlbum(target: album, newName: txtFieldName.text, newDate: datePicker.date as NSDate)
             if(!albumStatus.successful){
@@ -102,20 +98,19 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
             }
         }
         else{
+            
             let albumStatus:ModelStatus = ModelManager.shared().addAlbum(name: txtFieldName.text!, date: datePicker!.date as NSDate)
-            print(albumPhotos.count)
             if (!albumStatus.successful){
                 fatalError(albumStatus.description)
             }
-            for i in 0...myImages.count - 1{
-                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: myImages[i])
+            for img in myImages{
+                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: img)
                 if (!photoStatus.successful){
                     fatalError(albumStatus.description)
                 }
-
             }
-
-
+            
+            NotificationHandler.notify(title: "Um album para ser revisto", body: "Você não visita o album \(albumStatus.albumIdentifier!.name!)", date: albumStatus.albumIdentifier?.date as! Date, sound: true, badges: false)
             
         }
         self.dismiss(animated: true, completion: nil)

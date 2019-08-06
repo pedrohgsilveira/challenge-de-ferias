@@ -17,34 +17,15 @@ public class PhotoCard: NSManagedObject {
     private let dF = DateFormatter()    
     func feed(photo:UIImage?) {
     
-        dF.dateFormat = "dd-MM-yyyy hh:mm:ssZ"
-//
-//        self.name = name
-//        self.date = date
-//
+
         
         if let photo = photo{
-            let photoPath = dF.string(from: Date())
+            let photoPath = "\(photo.hash) \(photo.hashValue)"
             ImagesControl.saveImage(image: photo, nameWithoutExtension: photoPath)
+            print("Nome: \(photoPath)")
             self.photoPath = photoPath
         }
     }
-    
-//    func feedAlbums(photo:UIImage?){
-//        dF.dateFormat = "dd-MM-yyyy hh:mm:ssZ"
-//        
-//        if let photo = photo{
-//            let photoPath = dF.string(from: Date())
-//            ImagesControl.saveImage(image: photo, nameWithoutExtension: photoPath)
-//            self.photoPath = phot
-//        }
-//        
-//        
-//        
-//        
-//        
-//    }
-    
     
     
 //    func modifyData(newName:String?, newDate: NSDate?) -> Bool{

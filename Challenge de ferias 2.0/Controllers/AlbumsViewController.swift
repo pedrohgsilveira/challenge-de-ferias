@@ -9,11 +9,7 @@
 import UIKit
 import Foundation
 
-//enum PhotoType {
-//    case primeiraOpcao
-//    case segundaOpcao
-//    case terceiraOpcao
-//}
+
 
 class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource {
    
@@ -23,7 +19,6 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
     var currentAlbum:PhotoAlbum?
     var albumPhotoPath: IndexPath?
 
-//    var selectedType: PhotoType = .primeiraOpcao
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
     @IBOutlet weak var lblName: UILabel!
@@ -78,8 +73,6 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-//        var imagesPaths:[String] = []
-        
         let cell = self.photosCollectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
         
         if let currentAlbum = currentAlbum{
@@ -91,33 +84,6 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
             }
         }
         
-        
-//        let currentPhoto = albumPhotos[indexPath.row]
-//        let answer:String? = ImagesControl.getFile(filePathWithoutExtension: currentPhoto.photoPath!)
-//        if let answer = answer{
-//            cell.photoImageView.image = UIImage(contentsOfFile: answer)
-//
-//        }
-//        if let currentAlbum = currentAlbum{
-//            if let way = currentAlbum.completePhoto, way.count>0{
-//                for i in 0...way.count - 1{
-//                    if let path = way[i] as? PhotoCard{
-//                        if let photoPath = path.photoPath{
-//                            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: photoPath)
-//                            if let answer = answer{
-//                                imagesPaths.append(answer)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//            let imagePath = imagesPaths[indexPath.row]
-//
-//            cell.photoImageView.image = UIImage(contentsOfFile: imagePath)
-//
-//
-//        }
         
         return cell
     }
@@ -193,5 +159,7 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
         controller.navigationItem.title = "Editar Album"
         navController.navigationItem.rightBarButtonItem?.title = "Save"
     }
+    
+    
     
 }
