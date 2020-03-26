@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CloudKit
 
 
 
@@ -15,9 +16,10 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
    
     
     var albumPhotos:[PhotoCard] = []
-    var albums:[PhotoAlbum] = []
+    var albums:[CKRecord] = []
     var currentAlbum:PhotoAlbum?
     var albumPhotoPath: IndexPath?
+    var cloudKitController = CloudKitController.self
 
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
@@ -33,9 +35,15 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
     }
     
     private func getData(){
-        albumPhotos = ModelManager.shared().completePhoto
-        albums = ModelManager.shared().albuns
-        
+        cloudKitController.shared.fetch(recordID: Album().record.recordID, on: .privateDB) { (result) in
+            switch result {
+                
+            case .success(let photo):
+                self.albums.append(contentsOf: photo)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }     
     }
     
     

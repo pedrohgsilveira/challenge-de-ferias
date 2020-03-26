@@ -15,6 +15,8 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
     var createdAlbum:PhotoAlbum? = nil
     var albumPhotos:[PhotoCard] = []
     var albumPhoto:PhotoCard?
+    var album = Album()
+    let cloudKitControler = CloudKitController.self
 
     
     @IBOutlet weak var txtFieldName: UITextField!
@@ -32,6 +34,7 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
         txtFieldName.delegate = self
 
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -91,29 +94,50 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func btnDone(_ sender: Any) {
-        if let album = currentAlbum{
-            let albumStatus:ModelStatus = ModelManager.shared().editAlbum(target: album, newName: txtFieldName.text, newDate: datePicker.date as NSDate)
-            if(!albumStatus.successful){
-                fatalError(albumStatus.description)
-            }
-        }
-        else{
-            
-            let albumStatus:ModelStatus = ModelManager.shared().addAlbum(name: txtFieldName.text!, date: datePicker!.date as NSDate)
-            if (!albumStatus.successful){
-                fatalError(albumStatus.description)
-            }
-            for img in myImages{
-                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: img)
-                if (!photoStatus.successful){
-                    fatalError(albumStatus.description)
+        //        if let album = currentAlbum{
+        //            let albumStatus:ModelStatus = ModelManager.shared().editAlbum(target: album, newName: txtFieldName.text, newDate: datePicker.date as NSDate)
+        //            if(!albumStatus.successful){
+        //                fatalError(albumStatus.description)
+        //            }
+        //        }
+        //        else{
+        
+        
+        album.name = txtFieldName.text!
+        album.date = datePicker.date
+        cloudKitControler.shared.save(record: album.record, on: .privateDB) { (result) in
+            switch result {
+            case .success(_):
+                for image in self.myImages {
+                    let photo = Photo(fullImage: image, compression: 0.5, albumID: self.album.recordID)
+                    self.cloudKitControler.shared.save(record: photo.record, on: .privateDB) { (result) in
+                        switch result {
+                        case .success(let photo):
+                            print(photo)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 }
+            case .failure(let error):
+                print(error)
             }
+            //            let albumStatus:ModelStatus = ModelManager.shared().addAlbum(name: txtFieldName.text!, date: datePicker!.date as NSDate)
+            //            if (!albumStatus.successful){
+            //                fatalError(albumStatus.description)
+            //            }
+            //                for img in self.myImages{
+            //                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: img)
+            //                if (!photoStatus.successful){
+            //                    fatalError(albumStatus.description)
+            //                }
+            //            }
             
-            NotificationHandler.notify(title: "Um album para ser revisto", body: "Você não visita o album \(albumStatus.albumIdentifier!.name!)", date: albumStatus.albumIdentifier?.date as! Date, sound: true, badges: false)
+            NotificationHandler.notify(title: "Um album para ser revisto", body: "Você não visita o album \(self.album.name)", date: self.album.date, sound: true, badges: false)
             
         }
         self.dismiss(animated: true, completion: nil)
-
+        
     }
+//    }
 }

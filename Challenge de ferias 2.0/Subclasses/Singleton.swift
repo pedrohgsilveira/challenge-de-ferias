@@ -15,6 +15,7 @@ import UIKit
 public class ModelManager{
     
     private init(){
+        
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do{
             _albuns = try context.fetch(PhotoAlbum.fetchRequest())

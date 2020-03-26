@@ -58,4 +58,13 @@ class ImagesControl {
         }
         return true
     }
+    
+    static func saveToDisk(image: UIImage, compression: CGFloat) -> URL {
+        var fileURL = FileManager.default.temporaryDirectory
+        let filename = UUID().uuidString
+        fileURL.appendPathComponent(filename)
+        let data = image.jpegData(compressionQuality: compression)!
+        try! data.write(to: fileURL)
+        return fileURL
+    }
 }
