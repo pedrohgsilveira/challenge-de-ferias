@@ -17,7 +17,7 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
     
     var albumPhotos:[PhotoCard] = []
     var albums:[CKRecord] = []
-    var currentAlbum:PhotoAlbum?
+    var currentAlbum:Album?
     var albumPhotoPath: IndexPath?
     var cloudKitController = CloudKitController.self
 
@@ -35,15 +35,15 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
     }
     
     private func getData(){
-        cloudKitController.shared.fetch(recordID: Album().record.recordID, on: .privateDB) { (result) in
-            switch result {
-                
-            case .success(let photo):
-                self.albums.append(contentsOf: photo)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }     
+//        cloudKitController.shared.fetch(recordID: Album().record.recordID, on: .privateDB) { (result) in
+//            switch result {
+//                
+//            case .success(let photo):
+//                self.albums.append(contentsOf: photo)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }     
     }
     
     
@@ -72,9 +72,8 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
         var numberOfPhotos:Int?
         
         if let currentAlbum = currentAlbum{
-            if let quantityOfPhotos = currentAlbum.completePhoto?.count{
-                numberOfPhotos = quantityOfPhotos
-            }
+        let quantityOfPhotos = currentAlbum.albumPhotos.count
+        numberOfPhotos = quantityOfPhotos
         }
         return numberOfPhotos!
     }
@@ -84,12 +83,9 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
         let cell = self.photosCollectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
         
         if let currentAlbum = currentAlbum{
-            let currentPhotos = currentAlbum.completePhoto
-            let currentPhoto = currentPhotos![indexPath.item] as? PhotoCard
-            let answer:String? = ImagesControl.getFile(filePathWithoutExtension: currentPhoto!.photoPath!)
-            if let answer = answer{
-                cell.photoImageView.image = UIImage(contentsOfFile: answer)
-            }
+            let currentPhotos = currentAlbum.albumPhotos
+            let currentPhoto = currentPhotos[indexPath.item] 
+            cell.photoImageView.image = currentPhoto
         }
         
         
@@ -135,24 +131,13 @@ class AlbumsViewController: UIViewController, DataModifiedDelegate,UICollectionV
         
         
         if let currentAlbum = currentAlbum{
-            for i in currentAlbum.completePhoto?.array as! [PhotoCard]{
-                imagesPath.append(i.photoPath!)
-            }
-            
-            mainImagePath = imagesPath[0]
-            
-            if let mainImagePath = mainImagePath{
-                let answer:String? = ImagesControl.getFile(filePathWithoutExtension: mainImagePath)
-                if let answer = answer{
-                    mainImage.image = UIImage(contentsOfFile: answer)
-                }
-            }
+            mainImage.image = currentAlbum.albumPhotos[0]
         }
         
         if let currentAlbum = currentAlbum{
             dF.dateFormat = "dd-MM-yy hh:mm"
-            lblDate.text = dF.string(from: currentAlbum.date! as Date)
-            lblName.text = currentAlbum.name
+            lblDate.text = dF.string(from: currentAlbum.setedDate)
+            lblName.text = currentAlbum.setedName
         }
         else{
             navigationItem.title = "Error"

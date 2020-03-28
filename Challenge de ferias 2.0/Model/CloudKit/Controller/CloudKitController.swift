@@ -189,6 +189,4 @@ public class CloudKitController {
             return query
         }
     }    
-    
-    
 }

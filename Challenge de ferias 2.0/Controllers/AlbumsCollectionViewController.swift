@@ -11,7 +11,9 @@ import UIKit
 
 class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegateFlowLayout, DataModifiedDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    private var albums:[PhotoAlbum] = []
+    private var coreDataAlbums:[PhotoAlbum] = []
+    private var albums: [Album] = []
+    private var albumInteractor = AlbumIteractor.self
     var albumPath:IndexPath?
     private var viwerController:AlbumsViewController?
     var index:Int?
@@ -43,7 +45,12 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     private func getData(){
-        albums = ModelManager.shared().albuns
+        albumInteractor.shared.fetch { [weak self](fetchedAlbums) in
+            guard let fetchedAlbums = fetchedAlbums  else {
+                return
+            }
+            self?.albums = fetchedAlbums
+        }
     }
     
     private let reuseIdentifier = "AlbumCell"
@@ -78,18 +85,15 @@ class AlbumsCollectionViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.albumsColletionVIew.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumsCollectionViewCell
         let currentAlbum = albums[indexPath.row]
-        cell.albumNamelbl.text = currentAlbum.name
+        cell.albumNamelbl.text = currentAlbum.setedName
         
         var contadorImagens:Int = 0
-        for photo in currentAlbum.completePhoto?.array as! [PhotoCard]{
-            if let imgPath = ImagesControl.getFile(filePathWithoutExtension: photo.photoPath!){
-                print(imgPath)
-                cell.photoCardsColletion[contadorImagens].image = UIImage(contentsOfFile: imgPath)
+        for photo in currentAlbum.albumPhotos {
+                cell.photoCardsColletion[contadorImagens].image = photo
                 contadorImagens += 1
                 if contadorImagens == 5{
                     break
                 }
-            }
         }
         return cell
     }

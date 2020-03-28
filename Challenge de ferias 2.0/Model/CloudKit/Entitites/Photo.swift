@@ -13,15 +13,31 @@ import UIKit
 class Photo: NSObject, EntityObject {
     
     let record: CKRecord
-    
     static let recordType = "Photo"
     
+    public private (set) var setedImage: UIImage 
+//    var fullImage: UIImage
+//    var compression: CGFloat
+//    var albumID: CKRecord.ID
+//    var id: String
     
-    init(fullImage: UIImage, compression: CGFloat, albumID: CKRecord.ID) {
+    
+    init(fullImage: UIImage, compression: CGFloat, albumID: CKRecord.ID, id: String) {
+        
+        setedImage = UIImage()
+        
         record = CKRecord(recordType: Photo.recordType)
         record["album"] = CKRecord.Reference(recordID: albumID, action: .deleteSelf)
         record["image"] = CKAsset(image: fullImage, compression: compression)
+        
+        let recordAsset = record["image"] as? CKAsset
+        
+        if let image = recordAsset?.image {
+            setedImage = image
+        }
+        
     }
+
 }
 
 

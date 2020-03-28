@@ -17,21 +17,31 @@ class Album: NSObject, EntityObject {
     
     static let recordType = "Album"
     
-    var name: String
-    var date: Date
+    public private (set) var setedName: String
+    public private (set) var setedDate: Date
+    public private (set) var albumPhotos: [UIImage]
+//    var name: String
+//    var date: Date
     var imagesFileUrls: [URL?] = []
     
     var recordID: CKRecord.ID
     
-    override init() {
+    init(name: String, date: Date) {
+        
+        albumPhotos = []
         self.record = CKRecord(recordType: Album.recordType)
         recordID = record.recordID
-        name = record["name"] as? String ?? "" 
-        date = record["date"] as? Date ?? Date()
+        record["name"] = name
+        record["date"] = date
+        self.setedName = record["name"] as? String ?? "" 
+        self.setedDate = record["date"] as? Date ?? Date()
                 
-        if let photos = record["photos"] as? [CKAsset] {
-            for photo in photos {
-                imagesFileUrls.append(photo.fileURL)
+        if let assets = record["photos"] as? [CKAsset] {
+            for asset in assets {
+                imagesFileUrls.append(asset.fileURL)
+                if let photo = asset.image {
+                    albumPhotos.append(photo)
+                }
             }
         }
     }   

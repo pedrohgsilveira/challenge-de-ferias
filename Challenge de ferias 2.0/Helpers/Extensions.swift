@@ -22,8 +22,6 @@ extension CKAsset {
         }
         
         return image
-        
     }
-    
-    
 }
+

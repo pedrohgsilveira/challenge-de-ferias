@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D93714A6242E876C00B78E9D /* PhotoIteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93714A5242E876C00B78E9D /* PhotoIteractor.swift */; };
+		D93714A8242E8BF700B78E9D /* ParseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93714A7242E8BF700B78E9D /* ParseInteractor.swift */; };
+		D93714AA242EE4BE00B78E9D /* AlbumIteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93714A9242EE4BE00B78E9D /* AlbumIteractor.swift */; };
 		D93AB8DA242BCA5A00A8A7E2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93AB8D9242BCA5A00A8A7E2 /* Photo.swift */; };
 		D93AB8DD242BCBED00A8A7E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93AB8DC242BCBED00A8A7E2 /* Extensions.swift */; };
 		D93AB8DF242BE8FF00A8A7E2 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93AB8DE242BE8FF00A8A7E2 /* PhotoAlbum.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D93714A5242E876C00B78E9D /* PhotoIteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoIteractor.swift; sourceTree = "<group>"; };
+		D93714A7242E8BF700B78E9D /* ParseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseInteractor.swift; sourceTree = "<group>"; };
+		D93714A9242EE4BE00B78E9D /* AlbumIteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumIteractor.swift; sourceTree = "<group>"; };
 		D93AB8D9242BCA5A00A8A7E2 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		D93AB8DC242BCBED00A8A7E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D93AB8DE242BE8FF00A8A7E2 /* PhotoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
@@ -89,6 +95,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D93714A4242E7EA100B78E9D /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				D93714A5242E876C00B78E9D /* PhotoIteractor.swift */,
+				D93714A7242E8BF700B78E9D /* ParseInteractor.swift */,
+				D93714A9242EE4BE00B78E9D /* AlbumIteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
 		D93AB8D7242BC99000A8A7E2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +213,7 @@
 		D9AE341F22DA1AEF00F33C53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D93714A4242E7EA100B78E9D /* Interactors */,
 				D93AB8D8242BC99B00A8A7E2 /* CloudKit */,
 				D93AB8D7242BC99000A8A7E2 /* CoreData */,
 			);
@@ -312,6 +329,7 @@
 				D9AE341222DA1ABD00F33C53 /* Challenge_de_ferias_2_0.xcdatamodeld in Sources */,
 				D9AE340A22DA1ABD00F33C53 /* AppDelegate.swift in Sources */,
 				D9AE346222DA3A1000F33C53 /* Singleton.swift in Sources */,
+				D93714A8242E8BF700B78E9D /* ParseInteractor.swift in Sources */,
 				D9C33A1022EE4B25005B367C /* AppDelegateExtension.swift in Sources */,
 				D9BAA9C522DE6C1200823F15 /* AlbumsCollectionViewCell.swift in Sources */,
 				D9C33A1222EE4C4E005B367C /* NotificationsHandler.swift in Sources */,
@@ -320,8 +338,10 @@
 				D9AE346422DA3D4E00F33C53 /* DataModifiedDelegate.swift in Sources */,
 				D93AB8E3242BFA1300A8A7E2 /* RecordType.swift in Sources */,
 				D9BAA9CF22DF904600823F15 /* AlbumsCreatorViewController.swift in Sources */,
+				D93714AA242EE4BE00B78E9D /* AlbumIteractor.swift in Sources */,
 				D9AE346D22DCE87A00F33C53 /* PhotoCard+CoreDataClass.swift in Sources */,
 				D93AB8E5242BFA4500A8A7E2 /* Database.swift in Sources */,
+				D93714A6242E876C00B78E9D /* PhotoIteractor.swift in Sources */,
 				D9BAA9CD22DF892A00823F15 /* AlbumsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,7 +496,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PHGS.AdventureBook;
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryRemember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -495,7 +515,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PHGS.AdventureBook;
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryRemember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

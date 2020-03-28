@@ -11,11 +11,10 @@ import UIKit
 class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
 
     
-    var currentAlbum:PhotoAlbum?
-    var createdAlbum:PhotoAlbum? = nil
-    var albumPhotos:[PhotoCard] = []
-    var albumPhoto:PhotoCard?
-    var album = Album()
+    var currentAlbum:Album?
+    var createdAlbum:Album? = nil
+    var albumPhotos:[Photo] = []
+    var albumPhoto:Photo?
     let cloudKitControler = CloudKitController.self
 
     
@@ -41,7 +40,7 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-   
+    
     @IBAction func editionChanged(_ sender: UITextField) {
         if(sender.text?.count == 1){
             if sender.text == " "{
@@ -64,80 +63,74 @@ class AlbumsCreatorViewController: UIViewController, UITextFieldDelegate {
         
         if let alb = currentAlbum{
             btnDone.isEnabled = true
-            txtFieldName.text = alb.name
-            datePicker.date = alb.date! as Date
+            txtFieldName.text = alb.setedName
+            datePicker.date = alb.setedDate
             
             if let photoCard = albumPhoto{
-                if let path = photoCard.photoPath{
-                    let answer:String? = ImagesControl.getFile(filePathWithoutExtension: path)
-                    if let answer = answer{
-                        lastImage.image = UIImage(contentsOfFile: answer)
-                        myImages.append(lastImage.image!)
-                    }
-                }
+                myImages.append(photoCard.setedImage)
             }
         }
     }
     
     @IBAction func photoSelector(_ sender: UIButton) {
-            imgPicker = ImagePicker()
+        imgPicker = ImagePicker()
         imgPicker.pickImage(self){ (image) in
-                self.lastImage.image = image
-                self.myImages.append(image)
-                self.photosCountlbl.text = "\(self.myImages.count)"
-            }
+            self.lastImage.image = image
+            self.myImages.append(image)
+            self.photosCountlbl.text = "\(self.myImages.count)"
+        }
     }
-
+    
     @IBAction func btnCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-
-
+    
+    
     @IBAction func btnDone(_ sender: Any) {
-        //        if let album = currentAlbum{
-        //            let albumStatus:ModelStatus = ModelManager.shared().editAlbum(target: album, newName: txtFieldName.text, newDate: datePicker.date as NSDate)
-        //            if(!albumStatus.successful){
-        //                fatalError(albumStatus.description)
-        //            }
-        //        }
-        //        else{
-        
-        
-        album.name = txtFieldName.text!
-        album.date = datePicker.date
-        cloudKitControler.shared.save(record: album.record, on: .privateDB) { (result) in
-            switch result {
-            case .success(_):
-                for image in self.myImages {
-                    let photo = Photo(fullImage: image, compression: 0.5, albumID: self.album.recordID)
-                    self.cloudKitControler.shared.save(record: photo.record, on: .privateDB) { (result) in
-                        switch result {
-                        case .success(let photo):
-                            print(photo)
-                        case .failure(let error):
-                            print(error)
+        if let album = currentAlbum{
+//            let albumStatus:ModelStatus = ModelManager.shared().editAlbum(target: album, newName: txtFieldName.text, newDate: datePicker.date as NSDate)
+//            if(!albumStatus.successful){
+//                fatalError(albumStatus.description)
+//            }
+        }
+            
+        else{
+            
+            let album = Album(name: txtFieldName.text!, date: datePicker.date)
+            cloudKitControler.shared.save(record: album.record, on: .privateDB) { (result) in
+                switch result {
+                case .success(_):
+                    for image in self.myImages {  
+                        let id = UUID.init().uuidString
+                        let photo = Photo(fullImage: image, compression: 0.5, albumID: album.recordID, id: id)
+                        self.cloudKitControler.shared.save(record: photo.record, on: .privateDB) { (result) in
+                            switch result {
+                            case .success(let photo):
+                                print(photo)
+                            case .failure(let error):
+                                print(error)
+                            }
                         }
                     }
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
-            }
-            //            let albumStatus:ModelStatus = ModelManager.shared().addAlbum(name: txtFieldName.text!, date: datePicker!.date as NSDate)
-            //            if (!albumStatus.successful){
-            //                fatalError(albumStatus.description)
-            //            }
-            //                for img in self.myImages{
-            //                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: img)
-            //                if (!photoStatus.successful){
-            //                    fatalError(albumStatus.description)
-            //                }
-            //            }
-            
-            NotificationHandler.notify(title: "Um album para ser revisto", body: "Você não visita o album \(self.album.name)", date: self.album.date, sound: true, badges: false)
-            
+                //            let albumStatus:ModelStatus = ModelManager.shared().addAlbum(name: txtFieldName.text!, date: datePicker!.date as NSDate)
+                //            if (!albumStatus.successful){
+                //                fatalError(albumStatus.description)
+                //            }
+                //                for img in self.myImages{
+                //                let photoStatus:ModelStatus = ModelManager.shared().addPhoto(target: albumStatus.albumIdentifier!, photo: img)
+                //                if (!photoStatus.successful){
+                //                    fatalError(albumStatus.description)
+                //                }
+                //            }
+                
+                //            NotificationHandler.notify(title: "Um album para ser revisto", body: "Você não visita o album \(album.name)", date: album.date, sound: true, badges: false)
+            }  
         }
         self.dismiss(animated: true, completion: nil)
         
     }
-//    }
+    //    }
 }
